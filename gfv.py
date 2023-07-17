@@ -107,14 +107,9 @@ class Circle(pg.sprite.Sprite):
     def check_collide(self,tuple,sprite):
         #m1v1+m2v2=(m1+m2)v3 - Conservation of momentum do it for both x and y components
         for circle1,circle2 in tuple:
-            #dx=abs(circle1.x_pos-circle2.x_pos)
-            #dy=abs(circle1.y_pos-circle2.y_pos)
-            #dist=math.sqrt(dx**2+dy**2)
-            #print(dx,dy)
             if pg.Rect.colliderect(circle1.rect,circle2.rect) and circle1.collided==False and circle2.collided== False:
-                print("new circle")
                 new_mass=circle1.mass+circle2.mass
-                new_radius=math.cbrt((new_mass*3)/(4*3.14))
+                new_radius=math.cbrt((new_mass*3)/(4*math.pi))
                 new_x_pos=(circle1.x_pos+circle2.x_pos)/2
                 new_y_pos=(circle1.y_pos+circle2.y_pos)/2
                 new_x_vel=((circle1.mass*circle1.x_vel)+(circle2.mass*circle2.x_vel))/new_mass
@@ -131,7 +126,7 @@ class Circle(pg.sprite.Sprite):
         
 def get_mass(radius,density):
     #density*volume=mass
-    return density*((4/3)*3.14*(radius**3))
+    return density*((4/3)*math.pi*(radius**3))
 
    
 def get_distance(start,end):
