@@ -109,7 +109,7 @@ class Circle(pg.sprite.Sprite):
         for circle1,circle2 in tuple:
             if pg.Rect.colliderect(circle1.rect,circle2.rect) and circle1.collided==False and circle2.collided== False:
                 new_mass=circle1.mass+circle2.mass
-                new_radius=math.cbrt((new_mass*3)/(4*3.1416))
+                new_radius=math.cbrt((new_mass*3)/(4*math.pi))
                 new_x_pos=(circle1.x_pos+circle2.x_pos)/2
                 new_y_pos=(circle1.y_pos+circle2.y_pos)/2
                 new_x_vel=((circle1.mass*circle1.x_vel)+(circle2.mass*circle2.x_vel))/new_mass
@@ -126,7 +126,7 @@ class Circle(pg.sprite.Sprite):
         
 def get_mass(radius,density):
     #density*volume=mass
-    return density*((4/3)*3.1416*(radius**3))
+    return density*((4/3)*math.pi*(radius**3))
 
    
 def get_distance(start,end):
