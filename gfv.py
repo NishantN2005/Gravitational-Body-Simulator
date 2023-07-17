@@ -112,7 +112,6 @@ class Circle(pg.sprite.Sprite):
             #dist=math.sqrt(dx**2+dy**2)
             #print(dx,dy)
             if pg.Rect.colliderect(circle1.rect,circle2.rect) and circle1.collided==False and circle2.collided== False:
-                print("new circle")
                 new_mass=circle1.mass+circle2.mass
                 new_radius=math.cbrt((new_mass*3)/(4*3.14))
                 new_x_pos=(circle1.x_pos+circle2.x_pos)/2
